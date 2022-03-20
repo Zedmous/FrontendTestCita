@@ -1,3 +1,8 @@
+# Ejecutar proyecto
+Intalando dependencias
+1. npm install
+Ejecutando proyecto
+2. npm run start o ng serve --o
 # TestFroAgenda
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
