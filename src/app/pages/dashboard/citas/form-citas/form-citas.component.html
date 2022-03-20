@@ -1,0 +1,112 @@
+<div class="container">
+  <h2 mat-dialog-title class="titulo">{{ title }} Cita</h2>
+  <mat-dialog-content class="formulario">
+    <form [formGroup]="forms">
+      <mat-form-field class="caja" appearance="fill">
+        <mat-label>Título</mat-label>
+        <input
+          matInput
+          placeholder="Ejemplo: Eduardo"
+          formControlName="titulo"
+          type="text"
+          autocomplete="off"
+          [readonly]="cita.action == 'ver'"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="caja" appearance="fill">
+        <mat-label>Motivo</mat-label>
+        <input
+          autocomplete="off"
+          matInput
+          placeholder="Ejemplo: Nieves"
+          formControlName="motivo"
+          type="text"
+          [readonly]="cita.action == 'ver'"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="caja" appearance="fill">
+        <mat-label>Fecha</mat-label>
+        <input
+          matInput
+          placeholder="Ejemplo: +584160534987"
+          formControlName="fecha"
+          type="date"
+          autocomplete="off"
+          [readonly]="cita.action == 'ver'"
+        />
+      </mat-form-field>
+      <mat-form-field class="caja" appearance="fill">
+        <mat-label>Hora</mat-label>
+        <input
+          autocomplete="off"
+          matInput
+          placeholder="Ejemplo: Nieves"
+          formControlName="hora"
+          type="time"
+          [readonly]="cita.action == 'ver'"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="caja-persona" appearance="fill">
+        <mat-label>Persona</mat-label>
+        <input
+          autocomplete="off"
+          matInput
+          placeholder="Ingrese el id de la persona. Ejemplo: 1"
+          formControlName="persona_id"
+          type="text"
+          [readonly]="cita.action == 'ver' || !encPersona"
+          
+        />
+      </mat-form-field>
+      <button
+        (click)="searchPersona()"
+        *ngIf="encPersona"
+        mat-icon-button
+        color="primary"
+        type="button"
+        class="boton-persona"
+      >
+        <mat-icon>person_search</mat-icon>
+      </button>
+      <button
+        (click)="removePersona()"
+        type="button"
+        *ngIf="!encPersona"
+        mat-icon-button
+        color="primary"
+        class="boton-persona"
+        [disabled]="cita.action == 'ver'"
+      >
+        <mat-icon>person_remove</mat-icon>
+      </button>
+      <br />
+      <br />
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions class="botones">
+    <button
+      type="button"
+      [disabled]="forms.invalid || cita.action == 'ver'"
+      mat-raised-button
+      class="boton"
+      color="primary"
+      (click)="save()"
+    >
+      Aceptar
+    </button>
+    <span class="example-spacer"></span>
+    <span class="example-spacer"></span>
+    <button
+      mat-dialog-close
+      type="button"
+      mat-raised-button
+      class="boton"
+      color="primary"
+    >
+      Volver
+    </button>
+  </mat-dialog-actions>
+</div>

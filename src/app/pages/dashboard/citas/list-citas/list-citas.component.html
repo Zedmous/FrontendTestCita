@@ -1,0 +1,63 @@
+<div class="container">
+  <mat-toolbar>
+    <span>Citas</span>
+    <span class="example-spacer"></span>
+  <!--
+    <button mat-raised-button color="primary" [routerLink]="[ './crear-cita']">Agregar</button>
+  -->
+  <button mat-raised-button color="primary" (click)="add()">Agregar</button>
+  
+  </mat-toolbar>
+
+  <mat-spinner *ngIf="loading"  class="spiner"></mat-spinner>
+  <div *ngIf="dataSource.data.length>0">
+    <mat-form-field appearance="standard">
+      <mat-label>Búsqueda por Filtro</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ejemplo: Entrevista" #input autocomplete="off">
+    </mat-form-field>
+    <div class="mat-elevation-z10">
+      <table mat-table matSort [dataSource]="dataSource" >
+        
+        <ng-container matColumnDef="titulo">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Título</th>
+          <td mat-cell *matCellDef="let element">{{ element.titulo }}</td>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="motivo">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Motivo</th>
+          <td mat-cell *matCellDef="let element">{{ element.motivo }}</td>
+        </ng-container>
+    
+        <!-- Weight Column -->
+        <ng-container matColumnDef="fecha">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Fecha</th>
+          <td mat-cell *matCellDef="let element">{{ element.fecha }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="persona">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Persona</th>
+          <td mat-cell *matCellDef="let element">{{ element.persona_id }}:{{ element.persona.nombre }} {{ element.persona.apellido }}</td>
+        </ng-container>
+    
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="operaciones">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element; let i = index" style="text-align: right;">
+            <a class="pointer search" matTooltip="Ver cita" (click)="ver(element) "><mat-icon>search</mat-icon></a>
+            <a class="pointer edit" matTooltip="Editar cita" (click)="edit(element) "><mat-icon>edit</mat-icon></a>
+            <a class="pointer delete" matTooltip="Eliminar cita" (click)="eliminar(element,i)"><mat-icon>delete</mat-icon></a>
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    </div>
+  
+  </div>
+  <h2 style="text-align: center;" *ngIf="dataSource.data.length<1">No hay registros que mostrar</h2>
+    
+</div>
+

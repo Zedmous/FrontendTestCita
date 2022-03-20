@@ -1,0 +1,14 @@
+[
+    {
+        "nombre":"Dashboard",
+        "redirect":"/dashboard"
+    },
+    {
+        "nombre":"Personas",
+        "redirect":"./personas"
+    },
+    {
+        "nombre":"Citas",
+        "redirect":"./citas"
+    }
+]
