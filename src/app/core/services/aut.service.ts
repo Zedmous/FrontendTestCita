@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/user';
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +11,7 @@ export class AutService {
   private route:string="/auth";
   constructor(
     private http: HttpClient,
-    //private jwthelperService:JwtHelperService
+    private jwthelperService:JwtHelperService
     ) {
       console.log("SE INSTANCIO AUTH.SERVICE")
     }
@@ -24,12 +25,12 @@ export class AutService {
   logout(request: Partial<User> ): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}${this.route}/logout`, request);
   }
-  /*
+  
   isAuth():boolean{
     const token:any= localStorage.getItem('token');
     if(this.jwthelperService.isTokenExpired(token)  || !localStorage.getItem('token')){
       return false;
     }
     return true;
-  }*/
+  }
 }

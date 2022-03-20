@@ -5,7 +5,7 @@ import { CredencialService } from '../../core/services/credencial.service';
 import { AutService } from '../../core/services/aut.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-
+import decode from 'jwt-decode';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.authServices.login(this.user).subscribe((res: any) => {
       console.log("Login exitoso")
+      console.log("Token: ",decode(res.data.access_token))
       localStorage.setItem('token', res.data.access_token);
       this.credencialService.setUsers(res.data.user);
       this.router.navigate(['dashboard']);

@@ -55,20 +55,20 @@ export class FormPersonasComponent implements OnInit {
   }
 
   get nombre() {
-    return this.forms.value.nombre;
+    return this.forms.get('nombre');
   }
   get apellido() {
-    return this.forms.value.apellido;
+    return this.forms.get('apellido');
   }
   get telefono() {
-    return this.forms.value.telefono;
+    return this.forms.get('telefono');
   }
   get descripcion() {
-    return this.forms.value.descripcion;
+    return this.forms.get('descripcion');
   }
   save() {
     const value:Persona=this.forms.value;
-    if (!this.persona) {
+    if (this.title=="Crear") {
       this.created(value);
     } else {
       this.updated(value);

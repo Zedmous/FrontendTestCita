@@ -12,6 +12,7 @@
           autocomplete="off"
           [readonly]="cita.action == 'ver'"
         />
+        <mat-error>El título es requerido</mat-error>
       </mat-form-field>
 
       <mat-form-field class="caja" appearance="fill">
@@ -24,6 +25,7 @@
           type="text"
           [readonly]="cita.action == 'ver'"
         />
+        <mat-error>El motivo es requerido</mat-error>
       </mat-form-field>
 
       <mat-form-field class="caja" appearance="fill">
@@ -36,6 +38,7 @@
           autocomplete="off"
           [readonly]="cita.action == 'ver'"
         />
+        <mat-error>La fecha es requerida</mat-error>
       </mat-form-field>
       <mat-form-field class="caja" appearance="fill">
         <mat-label>Hora</mat-label>
@@ -47,6 +50,7 @@
           type="time"
           [readonly]="cita.action == 'ver'"
         />
+        <mat-error>La hora es requerida</mat-error>
       </mat-form-field>
 
       <mat-form-field class="caja-persona" appearance="fill">
@@ -60,6 +64,7 @@
           [readonly]="cita.action == 'ver' || !encPersona"
           
         />
+        <mat-error>El id de la persona es requerido</mat-error>
       </mat-form-field>
       <button
         (click)="searchPersona()"

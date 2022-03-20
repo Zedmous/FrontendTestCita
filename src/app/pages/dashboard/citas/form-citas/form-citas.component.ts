@@ -132,7 +132,7 @@ export class FormCitasComponent implements OnInit {
     },(error)=>{
       if(error.status==404){
         this.encPersona=true;
-        this.snackBar.open("Id incorrecto de la persona", '', {
+        this.snackBar.open("Id de la persona no se encuentra registrada en el sistema", '', {
           duration:5000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom'

@@ -34,7 +34,7 @@ export class CredencialService {
     console.log(this.credencial);
     return this.credencial;
   }
-  public logout() {
+  public removeUsers() {
     sessionStorage.clear();
     localStorage.clear();
     this.credencial = {
